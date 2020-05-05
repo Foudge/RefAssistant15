@@ -12,6 +12,7 @@ using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 
 using Lardite.RefAssistant.Extensions;
+using Resx = global::RefAssistant.Resources;
 
 namespace Lardite.RefAssistant
 {
@@ -127,9 +128,9 @@ namespace Lardite.RefAssistant
             switch (errorCategory)
             {
                 case TaskErrorCategory.Warning:
-                    sb.Append(SourceName).Append(" ").Append(Resources.OutputLog_Warning).Append(": ").Append(message).AppendLine(); break;
+                    sb.Append(SourceName).Append(" ").Append(Resx.OutputLog_Warning).Append(": ").Append(message).AppendLine(); break;
                 case TaskErrorCategory.Error:
-                    sb.Append(SourceName).Append(" ").Append(Resources.OutputLog_Error).Append(": ").Append(message).AppendLine(); break;
+                    sb.Append(SourceName).Append(" ").Append(Resx.OutputLog_Error).Append(": ").Append(message).AppendLine(); break;
                 default:
                     sb.Append(message).AppendLine(); break;
             }

@@ -6,6 +6,7 @@
 
 using System;
 using System.Windows.Data;
+using Resx = global::RefAssistant.Resources;
 
 namespace Lardite.RefAssistant.UI
 {
@@ -24,7 +25,7 @@ namespace Lardite.RefAssistant.UI
         {
             if ((targetType != typeof(bool)) && (targetType != typeof(bool?)))
             {
-                throw Error.InvalidOperation(Resources.InvertBooleanConverter_InvalidOperation);
+                throw Error.InvalidOperation(Resx.InvertBooleanConverter_InvalidOperation);
             }
             return !(bool)value;
         }
@@ -37,7 +38,7 @@ namespace Lardite.RefAssistant.UI
         {
             if ((targetType != typeof(bool)) && (targetType != typeof(bool?)))
             {
-                throw Error.InvalidOperation(Resources.InvertBooleanConverter_InvalidOperation);
+                throw Error.InvalidOperation(Resx.InvertBooleanConverter_InvalidOperation);
             }
             return !(bool)value;
         }

@@ -56,6 +56,10 @@ namespace Lardite.RefAssistant.VsProxy
         /// <returns>Returns wrapper.</returns>
         public static BaseProjectWrapper CreateProjectWrapper(Project project)
         {
+            if (Guid.Parse(project.Kind) == ProjectKinds.CSharp)
+            {
+                return new CSharpProjectWrapper(project);
+            }
             if (Guid.Parse(project.Kind) == ProjectKinds.FSharp)
             {
                 return new FSharpProjectWrapper(project);
@@ -63,10 +67,6 @@ namespace Lardite.RefAssistant.VsProxy
             else if (Guid.Parse(project.Kind) == ProjectKinds.VisualCppCli)
             {
                 return new VisualCppCliProjectWrapper(project);
-            }
-            else if (Guid.Parse(project.Kind) == ProjectKinds.CSharp)
-            {
-                return new CSharpProjectWrapper(project);
             }
 
             // default wrapper

@@ -4,11 +4,11 @@
 // Author: Chistov Victor (vchistov@lardite.com)
 //
 
+using System.Linq;
 using System.Windows;
+using Lardite.RefAssistant.ObjectModel;
 using Lardite.RefAssistant.UI.ViewModel;
 using Microsoft.VisualStudio.PlatformUI;
-using Lardite.RefAssistant.ObjectModel;
-using System.Linq;
 
 namespace Lardite.RefAssistant.UI
 {

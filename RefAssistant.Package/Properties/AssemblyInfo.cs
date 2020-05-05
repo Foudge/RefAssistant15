@@ -1,36 +1,37 @@
-﻿//
-// Copyright © 2011-2012 Lardite.
-//
-// Author: Chistov Victor (vchistov@lardite.com),
-//         Belikov Sergey (sbelikov@lardite.com)
-//
-
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
-using System.Resources;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-#if VS10
-[assembly: AssemblyTitle("Lardite.RefAssistant.10.0.dll")]
-[assembly: AssemblyDescription("Lardite Reference Assistant for Visual Studio 2010")]
-[assembly: AssemblyProduct("Lardite Reference Assistant for Visual Studio 2010")]
-[assembly: Guid("CA8E8309-7ED1-4F8C-A768-7A8CAE5D165E")]
-#elif VS11
-[assembly: AssemblyTitle("Lardite.RefAssistant.11.0.dll")]
-[assembly: AssemblyDescription("Lardite Reference Assistant for Visual Studio 2012")]
-[assembly: AssemblyProduct("Lardite Reference Assistant for Visual Studio 2012")]
-[assembly: Guid("16F6FC93-74AB-4348-87E6-426148BF8227")]
-#endif
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("RefAssistant.15")]
+[assembly: AssemblyDescription("Reference Assistant for Visual Studio 2015 Lardite, devio IT")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("devio IT Services")]
+[assembly: AssemblyProduct("Reference Assistant for Visual Studio 2015 Lardite, devio IT")]
+[assembly: AssemblyCopyright("Copyright © 2011-2012 Lardite, 2020 devio IT")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
 
-[assembly: AssemblyCompany("Lardite Group")]
-[assembly: AssemblyCopyright("Copyright © 2011-2012 Lardite.")]
-
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-[assembly: CLSCompliant(false)]
-[assembly: NeutralResourcesLanguage("en", UltimateResourceFallbackLocation.MainAssembly)]
-[assembly: SuppressMessage("Microsoft.Design", "CA1017:MarkAssembliesWithComVisible")]
 
-[assembly: AssemblyVersion("1.2.12190.4000")]
-[assembly: AssemblyFileVersion("1.2.12190.4000")]
-[assembly: AssemblyInformationalVersion("1.2")]
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Build and Revision Numbers 
+// by using the '*' as shown below:
+// [assembly: AssemblyVersion("1.4.*")]
+[assembly: AssemblyVersion("1.4.0.0")]
+[assembly: AssemblyFileVersion("1.4.0.0")]
+[assembly: AssemblyInformationalVersion("1.4")]
+
+
+// https://michaelscodingspot.com/visual-studio-2017-extension-development-tutorial-part-1/

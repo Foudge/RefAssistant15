@@ -280,7 +280,7 @@ namespace Lardite.RefAssistant.Extensions
 
             foreach (var i in td.Interfaces)
             {
-                yield return i;
+                yield return i.InterfaceType;
             }
 
             if (td.BaseType != null)

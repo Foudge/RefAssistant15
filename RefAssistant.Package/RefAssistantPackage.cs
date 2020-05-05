@@ -1,60 +1,74 @@
-﻿//
-// Copyright © 2011-2012 Lardite.
-//
-// Author: Chistov Victor (vchistov@lardite.com)
-//
-
-using System;
-using System.ComponentModel.Design;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-
-using Lardite.RefAssistant.UI;
-using Lardite.RefAssistant.VsProxy.Commands;
-
+using System.Threading;
+using Lardite.RefAssistant;
 using Microsoft.VisualStudio.Shell;
+using Task = System.Threading.Tasks.Task;
 
-namespace Lardite.RefAssistant
+namespace RefAssistant
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
     /// </summary>
-    [PackageRegistration(UseManagedResourcesOnly = true)]
-    [InstalledProductRegistration("#1001", "#1004", "1.2.12190.4000", IconResourceID = 400, LanguageIndependentName = "References Assistant")]
+    /// <remarks>
+    /// <para>
+    /// The minimum requirement for a class to be considered a valid package for Visual Studio
+    /// is to implement the IVsPackage interface and register itself with the shell.
+    /// This package uses the helper classes defined inside the Managed Package Framework (MPF)
+    /// to do it: it derives from the Package class that provides the implementation of the
+    /// IVsPackage interface and uses the registration attributes defined in the framework to
+    /// register itself and its components with the shell. These attributes tell the pkgdef creation
+    /// utility what data to put into .pkgdef file.
+    /// </para>
+    /// <para>
+    /// To get loaded into VS, the package must be referred by &lt;Asset Type="Microsoft.VisualStudio.VsPackage" ...&gt; in .vsixmanifest file.
+    /// </para>
+    /// </remarks>
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+    [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
+    [Guid(RefAssistantPackage.PackageGuidString)]
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideProfile(typeof(GeneralOptionsPage), "References Assistant", "General", 1001, 1002, true, DescriptionResourceID = 1003)]
-    [ProvideOptionPage(typeof(GeneralOptionsPage), "References Assistant", "General", 1001, 1002, true)]
-#if VS10
-    [Guid(GuidList.guidRefAssistant100PkgString)]    
-#elif VS11
-    [Guid(GuidList.guidRefAssistant110PkgString)]    
-#endif    
-    public sealed class RefAssistantPackage : Package
+    public sealed class RefAssistantPackage : AsyncPackage
     {
-        #region Overriden Package Implementation
+        /// <summary>
+        /// RefAssistantPackage GUID string.
+        /// </summary>
+        public const string PackageGuidString = "3e8a4718-5488-4690-9559-11e1848b1a6e";
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RefAssistantPackage"/> class.
+        /// </summary>
+        public RefAssistantPackage()
+        {
+            // Inside this method you can place any initialization code that does not require
+            // any Visual Studio service because at this point the package object is created but
+            // not sited yet inside Visual Studio environment. The place to do all the other
+            // initialization is the Initialize method.
+        }
+
+        #region Package Members
 
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
-        /// where you can put all the initilaization code that rely on services provided by VisualStudio.
+        /// where you can put all the initialization code that rely on services provided by VisualStudio.
         /// </summary>
-        protected override void Initialize()
+        /// <param name="cancellationToken">A cancellation token to monitor for initialization cancellation, which can occur when VS is shutting down.</param>
+        /// <param name="progress">A provider for progress updates.</param>
+        /// <returns>A task representing the async work of package initialization, or an already completed task if there is none. Do not return null from this method.</returns>
+        protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            base.Initialize();
-            LogManager.ActivityLog = new ActivityLog(this);
+            LogManager.ActivityLog = new Lardite.RefAssistant.ActivityLog(this);
             LogManager.ErrorListLog = new ErrorListLog(this);
             LogManager.OutputLog = new OutputLog(this);
 
-            // Add our command handlers for menu (commands must exist in the .vsct file)
-            OleMenuCommandService mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            if (null != mcs)
-            {
-                var shellGateway = new ShellGateway(this, GetDialogPage(typeof(GeneralOptionsPage)) as IExtensionOptions);
-
-                // Create the command for the menu item.
-                mcs.AddCommand(new RemoveProjectReferencesCommand(this, shellGateway));
-                mcs.AddCommand(new RemoveSolutionReferencesCommand(this, shellGateway));
-            }
+            // When initialized asynchronously, the current thread may be a background thread at this point.
+            // Do any initialization that requires the UI thread after switching to the UI thread.
+            await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await RemoveUnusedReferencesCommand.InitializeAsync(this);
         }
 
-        #endregion // Overriden Package Implementation
+        #endregion
     }
 }

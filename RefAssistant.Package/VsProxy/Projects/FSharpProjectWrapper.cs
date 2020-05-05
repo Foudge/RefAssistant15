@@ -9,9 +9,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using EnvDTE;
-using Microsoft.VisualStudio.FSharp.ProjectSystem.Automation;
-
 using Lardite.RefAssistant.ObjectModel;
+using Microsoft.VisualStudio.FSharp.ProjectSystem.Automation;
 
 namespace Lardite.RefAssistant.VsProxy.Projects
 {

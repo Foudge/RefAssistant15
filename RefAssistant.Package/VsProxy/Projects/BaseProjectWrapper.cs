@@ -11,11 +11,9 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using EnvDTE;
-using VSLangProj80;
-
-using Mono.Cecil;
-
 using Lardite.RefAssistant.ObjectModel;
+using Mono.Cecil;
+using VSLangProj80;
 
 namespace Lardite.RefAssistant.VsProxy.Projects
 {

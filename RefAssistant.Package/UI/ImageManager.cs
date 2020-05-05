@@ -13,15 +13,15 @@ namespace Lardite.RefAssistant.UI
 {
     public sealed class ImageManager
     {
-        #region Fields
+#region Fields
 
         private const string ImageUriFormat = @"/{0};component/Images/{1}";
         private readonly Lazy<ImageSource> _assemblyImage;
         private static readonly string _assemblyName;
 
-        #endregion // Fields
+#endregion // Fields
 
-        #region .ctor
+#region .ctor
 
         public ImageManager()
         {
@@ -33,9 +33,9 @@ namespace Lardite.RefAssistant.UI
             _assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
         }
 
-        #endregion // .ctor
+#endregion // .ctor
 
-        #region Properties
+#region Properties
 
         public ImageSource AssemblyImage
         {
@@ -55,14 +55,10 @@ namespace Lardite.RefAssistant.UI
         {
             get
             {
-#if VS10
-                return "Assembly_100_32bit.png";
-#elif VS11
                 return "Assembly_110_32bit.png";
-#endif
             }
         }
 
-        #endregion // Properties
+#endregion // Properties
     }
 }

@@ -9,11 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Lardite.RefAssistant.ObjectModel;
 using Lardite.RefAssistant.UI;
 using Lardite.RefAssistant.VsProxy;
 using Lardite.RefAssistant.VsProxy.Projects;
+using RefAssistant;
 
 namespace Lardite.RefAssistant
 {
@@ -174,7 +174,7 @@ namespace Lardite.RefAssistant
                     return false;
                 }
 
-                return (project.HasAssembly 
+                return (project.HasAssembly
                     && project.Kind != ProjectKinds.Modeling
                     && project.Kind != ProjectKinds.Database
                     && !project.IsBuildInProgress);
