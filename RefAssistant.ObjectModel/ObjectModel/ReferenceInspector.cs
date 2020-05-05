@@ -79,7 +79,7 @@ namespace Lardite.RefAssistant.ObjectModel
             {
                 AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
 
-                var checkExecutor = (CheckExecutor)_executorDomain.CreateInstanceFromAndUnwrap(
+                var instance = _executorDomain.CreateInstanceFromAndUnwrap(
                     Assembly.GetExecutingAssembly().Location,
                     CheckExecutorTypeName,
                     true,
@@ -88,6 +88,10 @@ namespace Lardite.RefAssistant.ObjectModel
                     null,
                     null,
                     null);
+
+                var checkExecutor = (CheckExecutor)instance;
+                //LogManager.OutputLog.Information("CheckExecutor instance is " + (instance == null ? "null" : (instance.GetType().FullName + " " + instance.GetType().AssemblyQualifiedName)));
+                //LogManager.OutputLog.Information("expected " + typeof(CheckExecutor).FullName + " " + typeof(CheckExecutor).AssemblyQualifiedName);
 
                 return new ProjectInspectResult(evaluator.ProjectInfo, checkExecutor.Execute(evaluator));
             }
