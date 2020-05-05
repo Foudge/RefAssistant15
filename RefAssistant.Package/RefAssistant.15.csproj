@@ -56,6 +56,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Extensibility\BaseOptionModel.cs" />
+    <Compile Include="Extensibility\BaseOptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensibility\DialogPageProvider.cs" />
+    <Compile Include="Extensibility\GeneralOptions.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="Logs\ActivityLog.cs" />
     <Compile Include="Logs\ErrorListLog.cs" />
@@ -69,12 +75,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ShellGateway.cs" />
-    <Compile Include="UI\GeneralOptionsControl.xaml.cs">
-      <DependentUpon>GeneralOptionsControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\GeneralOptionsPage.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="UI\ImageManager.cs" />
     <Compile Include="UI\InvertBooleanConverter.cs" />
     <Compile Include="UI\UnusedReferencesWindow.xaml.cs">
@@ -253,10 +253,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\GeneralOptionsControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\UnusedReferencesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

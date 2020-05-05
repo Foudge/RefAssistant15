@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Lardite.RefAssistant;
 using Microsoft.VisualStudio.Shell;
+using RefAssistant.Extensibility;
 using Task = System.Threading.Tasks.Task;
 
 namespace RefAssistant
@@ -30,6 +31,7 @@ namespace RefAssistant
     [Guid(RefAssistantPackage.PackageGuidString)]
     [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "pkgdef, VS and vsixmanifest are valid VS terms")]
     [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideOptionPage(typeof(DialogPageProvider.General), "Reference Assistant", "General", 0, 0, true)]
     public sealed class RefAssistantPackage : AsyncPackage
     {
         /// <summary>

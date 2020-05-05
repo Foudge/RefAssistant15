@@ -5,6 +5,7 @@ using Lardite.RefAssistant;
 using Lardite.RefAssistant.UI;
 using Lardite.RefAssistant.VsProxy;
 using Microsoft.VisualStudio.Shell;
+using RefAssistant.Extensibility;
 using Task = System.Threading.Tasks.Task;
 
 namespace RefAssistant
@@ -112,7 +113,7 @@ namespace RefAssistant
             var activeProjectGuid = Guid.Parse(DTEHelper.GetActiveProject(this.package /*ServiceProvider*/).Kind);
             LogManager.ActivityLog.Information(string.Format(Resources.RemoveProjectReferencesCmd_StartRemoving, activeProjectGuid.ToString("D")));
 
-            var shellGateway = new ShellGateway(package, package.GetDialogPage(typeof(GeneralOptionsPage)) as IExtensionOptions);
+            var shellGateway = new ShellGateway(package, GeneralOptions.Instance);  // package.GetDialogPage(typeof(GeneralOptionsPage)) as IExtensionOptions);
 
             using (var manager = new ExtensionManager(shellGateway))
             {
