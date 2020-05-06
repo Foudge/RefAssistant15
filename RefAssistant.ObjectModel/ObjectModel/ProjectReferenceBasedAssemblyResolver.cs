@@ -4,13 +4,10 @@
 // Author: Chistov Victor (vchistov@lardite.com)
 //
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Mono.Cecil;
-
 using Lardite.RefAssistant.Extensions;
+using Mono.Cecil;
 
 namespace Lardite.RefAssistant.ObjectModel
 {

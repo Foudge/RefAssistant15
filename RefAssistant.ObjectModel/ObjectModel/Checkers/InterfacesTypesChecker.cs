@@ -5,8 +5,8 @@
 //         Belikov Sergey (sbelikov@lardite.com)
 //
 
-using Mono.Cecil;
 using Lardite.RefAssistant.ObjectModel.Checkers.Helpers;
+using Mono.Cecil;
 
 namespace Lardite.RefAssistant.ObjectModel.Checkers
 {

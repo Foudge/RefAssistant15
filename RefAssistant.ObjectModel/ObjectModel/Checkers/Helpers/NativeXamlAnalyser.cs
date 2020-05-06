@@ -8,9 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using Microsoft.Xaml.Tools.XamlDom;
 using System.Xaml;
+using Microsoft.Xaml.Tools.XamlDom;
 
 namespace Lardite.RefAssistant.ObjectModel.Checkers.Helpers
 {

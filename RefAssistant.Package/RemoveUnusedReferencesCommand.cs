@@ -2,7 +2,6 @@
 using System.ComponentModel.Design;
 using EnvDTE;
 using Lardite.RefAssistant;
-using Lardite.RefAssistant.UI;
 using Lardite.RefAssistant.VsProxy;
 using Microsoft.VisualStudio.Shell;
 using RefAssistant.Extensibility;

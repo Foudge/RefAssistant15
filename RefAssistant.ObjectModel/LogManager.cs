@@ -5,7 +5,6 @@
 //         Belikov Sergey (sbelikov@lardite.com)
 //
 
-using Lardite.RefAssistant;
 
 namespace Lardite.RefAssistant
 {
