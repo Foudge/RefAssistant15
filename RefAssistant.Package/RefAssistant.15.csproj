@@ -101,6 +101,10 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Key.snk" />
+    <Content Include="Microsoft Public License.rtf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="packages.config" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
@@ -109,12 +113,18 @@
   <ItemGroup>
     <Content Include="Images\Assembly_110_32bit.png" />
     <Content Include="Images\MenuIcons_110_32bit.bmp" />
-    <Content Include="Images\RefAssistantPreview.11.0.png" />
+    <Content Include="Images\RefAssistantPreview.11.0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <VSCTCompile Include="RefAssistantPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
       <SubType>Designer</SubType>
     </VSCTCompile>
-    <Content Include="Resources\RefAssistantPackage.ico" />
+    <Content Include="Resources\RefAssistantPackage.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\RemoveUnusedReferencesCommand.png" />
   </ItemGroup>
   <ItemGroup>

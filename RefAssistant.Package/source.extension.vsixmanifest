@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="RefAssistant.15.02926b38-5432-46d4-b351-4734a2f1ac9f" Version="1.0" Language="en-US" Publisher="devio" />
+        <Identity Id="RefAssistant.15.02926b38-5432-46d4-b351-4734a2f1ac9f" Version="1.0" Language="en-US" Publisher="devio IT Services" />
         <DisplayName>RefAssistant.15</DisplayName>
         <Description xml:space="preserve">Remove Unused References</Description>
+        <MoreInfo>https://github.com/devio-at/RefAssistant15</MoreInfo>
+        <License>Microsoft Public License.rtf</License>
+        <Icon>RefAssistantPackage.ico</Icon>
+        <PreviewImage>RefAssistantPreview.11.0.png</PreviewImage>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0, 16.0)" />
