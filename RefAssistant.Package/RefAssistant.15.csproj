@@ -125,6 +125,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="Resources\RefAssistantPackage.png">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\RemoveUnusedReferencesCommand.png" />
   </ItemGroup>
   <ItemGroup>
